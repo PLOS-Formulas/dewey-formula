@@ -25,4 +25,4 @@ formula additionally relies on the following states:
 
 Configuration
 =============
-*See* `pillar.example <pillar.exaple>`_
+*See* `pillar.example <pillar.example>`_

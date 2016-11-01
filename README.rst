@@ -25,4 +25,6 @@ formula additionally relies on the following states:
 
 Configuration
 =============
-*See* `pillar.example <pillar.example>`_
+*See* `pillar.example <pillar.example>`_. Be sure to override the appropriate
+secrets, especially. You don't want to use the default values that are stored
+openly in this github repo!

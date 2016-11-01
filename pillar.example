@@ -3,8 +3,9 @@ secrets:
     postgres: Aiy5vah0cheep
     secret_key: faiw5xeeweetaizuDee7aigoFu7thif5Li5Ohthahtheigiy8chuTh8phash6eiS
     jira: asdf1234
-    powerdns_api_key: iej6ood8amiequ7beiLe7eiMiepo9bi
     vault: uebeeMu9aikei
+  pdns:
+    api-key: iej6ood8amiequ7beiLe7eiMiepo9bi
 uids:
   dewey:
     uid: 1234

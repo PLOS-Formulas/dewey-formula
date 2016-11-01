@@ -4,7 +4,7 @@
 {% set jira_user = salt['pillar.get']('dewey:jira_user', 'dewey') -%}
 {% set jira_password = salt['pillar.get']('secrets:dewey:jira', 'asdf1234') -%}
 {% set powerdns_api_url = salt['pillar.get']('dewey:powerdns_api_url', 'http://10.5.3.1:8081') -%}
-{% set powerdns_api_key = salt['pillar.get']('secrets:dewey:powerdns_api_key', 'iej6ood8amiequ7beiLe7eiMiepo9bi') -%}
+{% set powerdns_api_key = salt['pillar.get']('secrets:pdns:api-key', 'iej6ood8amiequ7beiLe7eiMiepo9bi') -%}
 {% set vault_password = salt['pillar.get']('secrets:dewey:vault', 'uebeeMu9aikei') -%}
 #
 # managed by salt, your changes won't last!

@@ -1,0 +1,20 @@
+{% set postgres_password = salt.pillar.get('secrets:dewey:postgres', 'Aiy5vah0cheep') -%}
+{% set powerdns_api_key = salt.pillar.get('secrets:pdns:api-key', 'iej6ood8amiequ7beiLe7eiMiepo9bi') -%}
+{% set jira_password = salt.pillar.get('secrets:dewey:jira', 'asdf1234') -%}
+{% set vault_password = salt.pillar.get('secrets:dewey:vault', 'uebeeMu9aikei') -%}
+{% set django_settings_module = salt.pillar.get('dewey:django_settings_module', 'dewey.core.settings.production') -%}
+{% set powerdns_api_url = salt.pillar.get('dewey:powerdns_api_url', 'http://10.9.8.7:8910') -%}
+{% set jira_user = salt.pillar.get('dewey:jira_user', 'dewey') -%}
+{% set secret_key = salt.pillar.get('secrets:dewey:secret_key', 'faiw5xeeweetaizuDee7a') -%}
+# This file is managed by salt to configure the dewey package via debconf.
+dewey	dewey/pg_password	password	{{ postgres_password }}
+dewey	dewey/pdns_key	password    {{ powerdns_api_key }}
+dewey	dewey/jira_password	password	{{ jira_password }}
+dewey	dewey/vault_password	password    {{ vault_password }}
+dewey	dewey/settings_module	string	{{ django_settings_module }}
+dewey	dewey/pdns_uri	string  {{ powerdns_api_url }}
+dewey	dewey/pg_user	string	dewey
+dewey	dewey/jira_user	string	{{ jira_user }}
+dewey	dewey/pg_host	string	localhost
+dewey	dewey/pg_port	string	5432
+dewey	dewey/secret_key	string	{{ secret_key }}

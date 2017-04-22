@@ -1,3 +1,9 @@
+# Note that the example values in this file are not actual passwords deployed
+# on any real systems. They are *example* values, representing the pillars and
+# data types you should create in your salt pillars to configure this formula.
+#
+# Be SURE to OVERRIDE the secrets in your pillars/secrets system.
+
 secrets:
   dewey:
     postgres: Aiy5vah0cheep
@@ -11,11 +17,10 @@ uids:
     uid: 1234
     gid: 1234
 version:
-  dewey: 0.0.13
   postgresql_major: 9.4
 dewey:
-  django_settings_module: dewey.settings.production
+  django_settings_module: dewey.core.settings.production
   jira_user: dewey
-  powerdns_api_url: 'http://10.5.3.1:8081'
+  powerdns_api_url: 'http://10.9.8.7:8910'
 
 

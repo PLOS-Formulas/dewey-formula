@@ -23,8 +23,8 @@ dewey_postgres_database:
     - name: dewey
     - owner: dewey
     - encoding: UTF8
-    - lc_collate: en_US.UTF8
-    - lc_ctype: en_US.UTF8
+    - lc_collate: en_US.UTF-8
+    - lc_ctype: en_US.UTF-8
     - require:
       - postgres_user: dewey_postgres_user
 

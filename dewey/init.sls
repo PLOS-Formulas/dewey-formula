@@ -108,6 +108,15 @@ nginx-dewey-config-symlink:
     - require:
       - file: nginx-dewey-config-file
 
+nginx-wildcard-key:
+  file.managed:
+    - name: /etc/nginx/ssl/soma-wildcard-easyrsa.key
+    - contents_pillar: secrets:soma-wildcard-easyrsa:key
+    - mode: 0640
+    - require:
+      - pkg: nginx
+    - makedirs: true
+
 extend:
   apt-repo-plos:
     pkgrepo.managed:

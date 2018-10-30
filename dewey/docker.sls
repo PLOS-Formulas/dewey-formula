@@ -39,6 +39,16 @@ dewey:
     - require:
       - group: dewey
 
+extend:
+  /etc/postgresql/{{ postgres_major }}/main/pg_hba.conf:
+    file.managed:
+      - context:
+        extended_access:
+          - type: host
+            database: dewey
+            user: dewey
+            method: md5
+
 # nginx-dewey-config-file:
 #   file.managed:
 #     - name: /etc/nginx/sites-available/dewey.conf

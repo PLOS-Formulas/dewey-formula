@@ -12,3 +12,6 @@ __pycache__/
 
 .kitchen.local.yml
 .kitchen
+
+# docker stuff
+dewey/docker-compose.override.yml

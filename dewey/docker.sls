@@ -8,6 +8,38 @@ include:
   # - nginx
   - postgres
 
+dewey_compose_file:
+  file.managed:
+    - name: /opt/dewey/docker-compose.yml
+    - source: salt://dewey/docker-compose.yml
+    - owner: dewey
+    - group: dewey
+    - require:
+      - group: dewey
+      - user: dewey
+
+# Using overrides lets us keep the compose file minimal so Dewey can be
+# launched outside of salt for development.
+dewey_compose_overrides:
+  file.managed:
+    - name: /opt/dewey/docker-compose.override.yml
+    - source: salt://dewey/conf/opt/dewey/docker-compose.override.yml
+    - owner: dewey
+    - group: dewey
+    - template: jinja
+    - defaults:
+      secret_key: salt.pillar.get('secrets:dewey:secret_key', 'faiw5xeeweetaizuDee7a')
+      pg_host: 
+      pg_pass: salt.pillar.get('secrets:dewey:postgres', 'Aiy5vah0cheep')
+      jira_pass: salt.pillar.get('secrets:dewey:jira', 'asdf1234')
+      pdns_url: salt.pillar.get('dewey:powerdns_api_url', 'http://10.9.8.7:8910')
+      pdns_key: salt.pillar.get('secrets:pdns:api-key', 'iej6ood8amiequ7beiLe7eiMiepo9bi')
+      vault_pass: salt.pillar.get('secrets:dewey:vault', 'uebeeMu9aikei')
+      django_settings_module: salt.pillar.get('dewey:django_settings_module_docker', 'dewey.core.settings.production')
+    - require:
+      - group: dewey
+      - user: dewey
+
 dewey_postgres_user:
   postgres_user.present:
     - name: dewey
@@ -43,11 +75,11 @@ extend:
   /etc/postgresql/{{ postgres_major }}/main/pg_hba.conf:
     file.managed:
       - context:
-        extended_access:
-          - type: host
-            database: dewey
-            user: dewey
-            method: md5
+          extended_access:
+            - type: host
+              database: dewey
+              user: dewey
+              method: md5
 
 # nginx-dewey-config-file:
 #   file.managed:

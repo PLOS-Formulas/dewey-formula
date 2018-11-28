@@ -1,14 +1,16 @@
-# There are some extra steps required to start dewey the first time.
-# These steps should be executed from the main dewey container
-# - Populate the DB
-#   - docker-compose run --rm -it --entrypoint /bin/sh dewey
-#   - . /venvs/dewey/bin/activate
-#   - dewey-manager migrate
-#   - dewey-manager createsuperuser
-#   - dewey-manager collectstatic
-#   - exit
-# - Start dewey
-#   - docker-compose up
+# To start up a dewey instance from a clean slate (no DB):
+#
+# First start up the services
+# `docker-compose up`
+#
+# Then We need to create a superuser
+# ```
+## Run a container that is setup to talk to the DB
+# docker-compose run --rm -it --entrypoint /bin/sh dewey
+# . /venvs/dewey/bin/activate
+# dewey-manager createsuperuser
+# exit
+# ```
 
 version: '3'
 

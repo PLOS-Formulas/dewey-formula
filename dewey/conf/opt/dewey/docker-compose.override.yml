@@ -1,0 +1,26 @@
+dewey:
+    environment:
+      DEWEY_SECRET_KEY: "{{ secret_key }}"
+      DEWEY_POSTGRES_HOST: "{{ pg_host }}"
+      DEWEY_POSTGRES_PASSWORD: "{{ pg_pass }}"
+      DEWEY_JIRA_PASSWORD: "{{ jira_pass }}"
+      PDNS_API_URL: "{{ pdns_url }}"
+      PDNS_API_KEY: "{{ pdns_key }}"
+      DEWEY_VAULT_PASSWORD: "{{ vault_pass }}"
+      DJANGO_SETTINGS_MODULE: "{{ django_settings_module }}"
+
+
+  dewey-celery-worker:
+    environment:
+      DEWEY_POSTGRES_HOST: "{{ pg_host }}"
+      DEWEY_POSTGRES_PASSWORD: "{{ pg_pass }}"
+
+  dewey-celery-scheduler:
+    environment:
+      DEWEY_POSTGRES_HOST: "{{ pg_host }}"
+      DEWEY_POSTGRES_PASSWORD: "{{ pg_pass }}"
+
+  dewey-celery-flower:
+    environment:
+      DEWEY_POSTGRES_HOST: "{{ pg_host }}"
+      DEWEY_POSTGRES_PASSWORD: "{{ pg_pass }}"

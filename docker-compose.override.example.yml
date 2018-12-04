@@ -1,23 +1,31 @@
 version: '3'
 
 services:
+  dewey_db:
+    image: postgres:9.4-alpine
+    environment:
+      POSTGRES_PASSWORD: "changeme"
+      POSTGRES_USER: "dewey"
+
   dewey:
     environment:
       DEWEY_SECRET_KEY: "changeme"
-      DEWEY_POSTGRES_HOST: "changeme"
+      DEWEY_POSTGRES_HOST: "dewey_db"
       DEWEY_POSTGRES_PASSWORD: "changeme"
+    depends_on:
+      - dewey_db
 
   dewey-celery-worker:
     environment:
-      DEWEY_POSTGRES_HOST: "changeme"
+      DEWEY_POSTGRES_HOST: "dewey_db"
       DEWEY_POSTGRES_PASSWORD: "changeme"
 
   dewey-celery-scheduler:
     environment:
-      DEWEY_POSTGRES_HOST: "changeme"
+      DEWEY_POSTGRES_HOST: "dewey_db"
       DEWEY_POSTGRES_PASSWORD: "changeme"
 
   dewey-celery-flower:
     environment:
-      DEWEY_POSTGRES_HOST: "changeme"
+      DEWEY_POSTGRES_HOST: "dewey_db"
       DEWEY_POSTGRES_PASSWORD: "changeme"

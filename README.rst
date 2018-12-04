@@ -44,24 +44,24 @@ The docker-compose.yml defines 5 services which comprise of:
 - dewey-celery-scheduler
 - dewey-celery-flower
 
+In the example override file we also include postgres to ease development.
+
 Configuration
 _____________
 In order to launch dewey we need to do a couple of things. First we need to
 fill in some missing env vars with an override file. We've included an example
 called `docker-compose.override.example.yml <docker-compose.override.example.yml>`_
-so copy that to dewey/docker-compose.override.yml and edit the env vars there. You can also feel
-free to override any other docker Configuration values here as well.
+so copy that to dewey/docker-compose.override.yml and edit the env vars there. 
+You can also feel free to override any other docker Configuration values 
+here as well.
 
-You will also need to run a couple of steps manually to populate the database
-and setup the superuser.
+You will need to manually create the super user, this step is faily simple.
 
 .. code-block:: bash
 
-  docker-compose run --rm -it --entrypoint /bin/sh dewey
+  docker-compose run --rm --entrypoint /bin/sh dewey
   . /venvs/dewey/bin/activate
-  dewey-manager migrate
   dewey-manager createsuperuser
-  dewey-manager collectstatic
   exit
 
 Now you can run dewey with docker-compose up. With this setup you should

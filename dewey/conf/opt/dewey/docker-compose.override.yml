@@ -8,19 +8,34 @@ dewey:
       PDNS_API_KEY: "{{ pdns_key }}"
       DEWEY_VAULT_PASSWORD: "{{ vault_pass }}"
       DJANGO_SETTINGS_MODULE: "{{ django_settings_module }}"
-
+{%- if 'is_vagrant' in grains %}
+    extra_hosts:
+      - "dewey_db:{{ host_ip }}"
+{%- endif %}
 
   dewey-celery-worker:
     environment:
       DEWEY_POSTGRES_HOST: "{{ pg_host }}"
       DEWEY_POSTGRES_PASSWORD: "{{ pg_pass }}"
+{%- if 'is_vagrant' in grains %}
+    extra_hosts:
+      - "dewey_db:{{ host_ip }}"
+{%- endif %}
 
   dewey-celery-scheduler:
     environment:
       DEWEY_POSTGRES_HOST: "{{ pg_host }}"
       DEWEY_POSTGRES_PASSWORD: "{{ pg_pass }}"
+{%- if 'is_vagrant' in grains %}
+    extra_hosts:
+      - "dewey_db:{{ host_ip }}"
+{%- endif %}
 
   dewey-celery-flower:
     environment:
       DEWEY_POSTGRES_HOST: "{{ pg_host }}"
       DEWEY_POSTGRES_PASSWORD: "{{ pg_pass }}"
+{%- if 'is_vagrant' in grains %}
+    extra_hosts:
+      - "dewey_db:{{ host_ip }}"
+{%- endif %}

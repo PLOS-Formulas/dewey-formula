@@ -36,7 +36,7 @@ dewey_compose_file:
 #       pdns_key: salt.pillar.get('secrets:pdns:api-key', 'iej6ood8amiequ7beiLe7eiMiepo9bi')
 #       vault_pass: salt.pillar.get('secrets:dewey:vault', 'uebeeMu9aikei')
 #       django_settings_module: salt.pillar.get('dewey:django_settings_module_docker', 'dewey.core.settings.production')
-#       host_ip: salt.grains.get('ip_interfaces:eth0:0')
+#       host_ip: salt.plosutil.get_canonical_ip()
 #     - require:
 #       - group: dewey
 #       - user: dewey
